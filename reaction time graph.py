@@ -27,6 +27,7 @@ maxDelay=5
 avg =0
 print("hello world")
 time.sleep(5*rand.random())
+
 times= []
 for count in range(numTests):
     time.sleep(maxDelay*rand.random())
