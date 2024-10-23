@@ -22,13 +22,12 @@ def Fibonacci(n):
 
 def GR(n):
     return Fibonacci(n)/Fibonacci(n-1)
-numseeds=100
-k=43
+numseeds=200
+k=GR(10)
 phy=1
-r0=10
+r0=1
 xi=[]
 yi=[]
-print(" "+str(meth.cos(60))+"   "+str(np.cos(60)))
 for seed in range(numseeds):
     phy += 2 * np.pi / k
    # if(phy>np.pi*2):
@@ -44,5 +43,3 @@ y = np.array(yi)
 plt.axis("equal")
 plt.scatter(x, y,s=r0/10)
 plt.show()
-
-
