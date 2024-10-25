@@ -28,7 +28,7 @@ def plot_data(x, y):
     plt.xlabel('Index')
     plt.ylabel('Values')
     plt.grid(True)
-    plt.savefig("fig2.png")
+    plt.savefig("fig4.png")
     plt.show()
 
 # Path to your text file

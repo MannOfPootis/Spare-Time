@@ -34,7 +34,7 @@ double euler(double force) {
     t = 0;
     k = 1;
     int dex = 0;
-    dt = 0.0001;
+    dt = 0.001;
     tmax = 100;
     for (t = 0; given < momentum; t += dt) {
         x += v * dt;
@@ -44,6 +44,8 @@ double euler(double force) {
         dex++;
         //std::cout << x << "\n";
     }
+    x += v * dt;
+    v += a * dt;
     std::cout<<k*x*x/2+m*v*v/2;
     return k*x*x/2+m*v*v/2;
 
