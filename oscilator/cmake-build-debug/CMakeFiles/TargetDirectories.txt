@@ -1,3 +1,3 @@
-/home/doominik/security copy/matplotlib zajebancija/oscilator/cmake-build-debug/CMakeFiles/oscilator.dir
-/home/doominik/security copy/matplotlib zajebancija/oscilator/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/doominik/security copy/matplotlib zajebancija/oscilator/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+E:/math/reaction_time_graph.py/oscilator/cmake-build-debug/CMakeFiles/oscilator.dir
+E:/math/reaction_time_graph.py/oscilator/cmake-build-debug/CMakeFiles/edit_cache.dir
+E:/math/reaction_time_graph.py/oscilator/cmake-build-debug/CMakeFiles/rebuild_cache.dir
