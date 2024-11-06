@@ -8,6 +8,8 @@
 double momentum = 1000;//giblana količina istrelka
 double given = 0;//gibalna količina klade
 //double series[10000]; nepotrebno
+double     dt = 0.01;
+
 FILE *datek;
 
 double collison(double force) {//funkcija ki poda konstantno silo
@@ -24,14 +26,13 @@ double collisonlinear(double t) {
 }
 
 double euler(double force) {
-    double m, x, v, a, t, dt, tmax, k;
+    double m, x, v, a, t, tmax, k;
     m = 1;                               //določam vrednosti
     x = 0;
     v = 0;
     a = 0;
     t = 0;
     k = 1;
-    dt = 0.001;
     for (t = 0; given < momentum; t += dt) {
         x += v * dt;
         v += a * dt;
@@ -44,13 +45,13 @@ double euler(double force) {
    // std::cout<<k*x*x/2+m*v*v/2;   4
     double W=    k*x*x/2+m*v*v/2;
     double w=1;/* w= sqrt(k/m) sam si bom življenje prišoparu računalniku ker sta oba dva 1 */
-    std::cout<<m*v+k*sqrt(2*W/k)*(1-cos(t))<<", "; //ocna za konservacijo gibalne količine
+    //std::cout<<m*v+k*sqrt(2*W/k)*(1-cos(t))<<", "; //ocna za konservacijo gibalne količine
     return k*x*x/2+m*v*v/2;
 
 }
 void makeGraph(char* myString,double chaing){
     datek=fopen(myString,"w");
-    for(double i=1;i<20000;i+=1){
+    for(double i=1;i<2000;i+=1){
         fprintf(datek,"%E\n ",   euler(momentum/i));
         given=0;
     }
