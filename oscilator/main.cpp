@@ -14,8 +14,11 @@ static double m, x, v, a, t, tmax, k;
 FILE *datek;
 
 double collison(double force) {
-    if(given>=momentum){return 0;}//funkcija ki poda konstantno silo
-    given += force;
+    if(given>=momentum){return 0;}
+//funkcija ki poda konstantno silo
+    if(given+force>=momentum){force=momentum-given;}    //we doin a bit to much ifs but fk it
+
+    given += force;//I sure do love my floating point errors
     return force;
 
 }//vem da to nebi raabila biti metoda ampapak s tem lažje nakazujem da je lahko funkcija
@@ -27,22 +30,18 @@ double collisonlinear(double t) {
 
 }
 double eulerTruncLin(int i) {
-    double m, x, v, a, t, tmax, k;
-    m = 1;                               //določam vrednosti
-    x = 0;
-    v = 0;
-    a = 0;
-    t = 0;
-    k = 1;
+
     for (t = 0; given < momentum; t += dt) {
-        x += v * dt;
-        v += a * dt;
         a = (collison(momentum/i*t) - x * k) / m;
+        v += a * dt;
+
+        x += v * dt;
+
         //series[dex] = x;
         //std::cout << x << "\n";
     }
-    x += v * dt;//dodatene tick hitrosti zato da za zelo majhne trke
-    v += a * dt;
+   // x += v * dt;//dodatene tick hitrosti zato da za zelo majhne trke
+  //  v += a * dt;
     std::cout<<k*x*x/2+m*v*v/2;
     double W=    k*x*x/2+m*v*v/2;
     double w=1;/* w= sqrt(k/m) sam si bom življenje prišoparu računalniku ker sta oba dva 1 */
@@ -51,26 +50,21 @@ double eulerTruncLin(int i) {
 
 }
 double euler(double force,double tmax) {
-    double m, x, v, a, t, k;
-    m = 1;                               //določam vrednosti
-    x = 0;
-    v = 0;
-    a = 0;
-    t = 0;
-    k = 1;
+
    // tmax=40;
     for (t = 0; t<tmax; t += dt) {
-        x += v * dt;
-        v += a * dt;
         a = (collison(force) - x * k) / m;
+        v += a * dt;
+
+        x += v * dt;
         //series[dex] = x;
         //std::cout << x << "\n";
     }
-    x += v * dt;//dodatene tick hitrosti zato da za zelo majhne trke
-    v += a * dt;
-    std::cout<<k*x*x/2+m*v*v/2;
-    double W=    k*x*x/2+m*v*v/2;
-    double w=1;/* w= sqrt(k/m) sam si bom življenje prišoparu računalniku ker sta oba dva 1 */
+   // x += v * dt;//dodatene tick hitrosti zato da za zelo majhne trke
+  //  v += a * dt;
+    //std::cout<<k*x*x/2+m*v*v/2;
+  //  double W=    k*x*x/2+m*v*v/2;
+    //double w=1;/* w= sqrt(k/m) sam si bom življenje prišoparu računalniku ker sta oba dva 1 */
     //std::cout<<m*v+k*sqrt(2*W/k)*(1-cos(t))<<", "; //ocna za konservacijo gibalne količine
     return k*x*x/2+m*v*v/2;
 
@@ -84,18 +78,18 @@ double eulerTrunc(int i) {
     t = 0;
     k = 1;*/
     for (t = 0; given < momentum; t += dt) {
-        x += v * dt;
-        v += a * dt;
         a = (collison(momentum/i) - x * k) / m;
+        v += a * dt;
+
+        x += v * dt;
+
         //series[dex] = x;
         //std::cout << x << "\n";
     }
-    x += v * dt;//dodatene tick hitrosti zato da za zelo majhne trke
-    v += a * dt;
+   // x += v * dt;//dodatene tick hitrosti zato da za zelo majhne trke
+    //v += a * dt;
     std::cout<<k*x*x/2+m*v*v/2;
-    double W=    k*x*x/2+m*v*v/2;
-    double w=1;/* w= sqrt(k/m) sam si bom življenje prišoparu računalniku ker sta oba dva 1 */
-    //std::cout<<m*v+k*sqrt(2*W/k)*(1-cos(t))<<", "; //ocna za konservacijo gibalne količine
+    
     return k*x*x/2+m*v*v/2;
 
 }
@@ -108,8 +102,8 @@ void makeGraph(char* myString,double chaing){
         v = 0;
         a = 0;
         t = 0;
-        k = 0.01;
-        fprintf(datek,"%E\n ",   eulerTrunc(i));
+        k = 1;
+        fprintf(datek,"%E\n ",   eulerTrunc(i))/*euler(momentum/i,200))*/;
         given=0;
     }
     fclose(datek);

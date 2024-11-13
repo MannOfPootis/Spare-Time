@@ -23,7 +23,7 @@ def read_data_from_file(file_path):
 # Function to plot the data
 def plot_data(x, y):
     plt.figure(figsize=(8, 6))
-    plt.plot( y, linestyle='-', color='b')
+    plt.plot( x,y, linestyle='-', color='b')
     plt.title('Data from Text File (Single Column)')
     plt.xlabel('Index')
     plt.ylabel('Values')
