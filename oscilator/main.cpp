@@ -42,7 +42,7 @@ double euler(double force) {
     }
     x += v * dt;//dodatene tick hitrosti zato da za zelo majhne trke
     v += a * dt;
-   // std::cout<<k*x*x/2+m*v*v/2;   4
+    std::cout<<k*x*x/2+m*v*v/2;
     double W=    k*x*x/2+m*v*v/2;
     double w=1;/* w= sqrt(k/m) sam si bom življenje prišoparu računalniku ker sta oba dva 1 */
     //std::cout<<m*v+k*sqrt(2*W/k)*(1-cos(t))<<", "; //ocna za konservacijo gibalne količine
