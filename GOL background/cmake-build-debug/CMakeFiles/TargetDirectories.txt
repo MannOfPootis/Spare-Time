@@ -1,0 +1,3 @@
+/home/doominik/security copy/matplotlib zajebancija/GOL background/cmake-build-debug/CMakeFiles/GOL_background.dir
+/home/doominik/security copy/matplotlib zajebancija/GOL background/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/doominik/security copy/matplotlib zajebancija/GOL background/cmake-build-debug/CMakeFiles/rebuild_cache.dir
