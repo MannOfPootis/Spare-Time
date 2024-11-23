@@ -9,7 +9,7 @@
 const std::string IMAGE_PATH = "/home/doominik/Downloads/image.psd(1).jpg";
 const int width = 1920;
 const int height = 1080;
-const int margin =1;
+const int margin =1 ;
 const int size=5;
 const int sizex=width*0.75/(margin*size);
 const int sizey=height*0.75/(margin*size);
@@ -95,11 +95,12 @@ int main() {
 
         }
     }
-    while (i<1000) {
-        GOLplane();
-
+    while (i<10000) {
+       // std::cout<<"next";
         createImage(IMAGE_PATH);      // Create a new image
         setBackground(IMAGE_PATH);   // Set it as the background
+        GOLplane();
+
         std::this_thread::sleep_for(std::chrono::seconds(sleep_interval));
         i++;
     }
