@@ -70,7 +70,7 @@ void GOLplane()
             int box=0;
             for(int k=-1;k<=1;k++){
                 for(int u=-1;u<=1;u++){
-                    box+=(int)space[(i+k)%sizex][(j+u)%sizey];
+                    box+=(int)space[(sizex+i+k)%sizex][(sizey+j+u)%sizey];
                 }
             }
             spaceTemp[i][j]= (box==3)||(box==4)&&(space[i][j]);
@@ -83,26 +83,27 @@ void GOLplane()
 
 
 int main() {
-    const int sleep_interval = 5; // Time interval in seconds
+    const int sleep_interval = 2; // Time interval in secondsS
     int i =0;
+    srand(time(0));
     for(int i =0;i<sizex;i++){
         for(int j=0;j<sizey;j++){
             //if(space[i][j]){
-            space[i][j]=(rand()%10)==0;
+            space[i][j]=(rand()%2)==0;
 
             //}
 
 
         }
     }
-    while (i<10000) {
+    while (true) {
        // std::cout<<"next";
         createImage(IMAGE_PATH);      // Create a new image
         setBackground(IMAGE_PATH);   // Set it as the background
         GOLplane();
 
         std::this_thread::sleep_for(std::chrono::seconds(sleep_interval));
-        i++;
+        //i++;
     }
 
     return 0;
